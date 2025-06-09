@@ -73,11 +73,12 @@ class BatchExportOperator(bpy.types.Operator):
             if props.apply_rotations:
                 bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
                 
-            original_position = object.location
+            op_x = object.location.x
+            op_y = object.location.y
+            op_z = object.location.z
             
             if props.move_to_world_center:
                 object.location = 0,0,0
-                print(original_position)
                             
             match props.export_settings:
                 case 'UNITY':
@@ -90,8 +91,7 @@ class BatchExportOperator(bpy.types.Operator):
                     raise Exception('Export Settings not Implemented')
             
             if props.move_to_world_center:
-                print(original_position)
-                object.location = original_position
+                object.location = op_x,op_y,op_z
         
         os.startfile(props.filepath)
         return {'FINISHED'}
