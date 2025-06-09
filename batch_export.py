@@ -1,9 +1,11 @@
 bl_info = {
     "name": "Batch Exporter",
     "author": "Ziplaw",
-    "version": (1, 0),
+    "version": (1, 1),
     "blender": (3, 6, 14),
     "description": "Exports in FBX in a given directory",
+    "location": "View3D > Side Bar > Batch Exporter",
+    "category": "3D View"
 }
 
 
