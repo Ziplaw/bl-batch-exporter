@@ -17,6 +17,7 @@ class BatchExportPropertyGroup(bpy.types.PropertyGroup):
         name="Path",
         description="Path to export all models",
         default="C:/tmp/",
+        subtype='DIR_PATH'
         )
     only_selected : bpy.props.BoolProperty(
         name="Only Selected",
