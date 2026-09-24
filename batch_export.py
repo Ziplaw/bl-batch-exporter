@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Batch Exporter",
     "author": "Ziplaw",
-    "version": (1, 1),
+    "version": (1, 2),
     "blender": (3, 6, 14),
     "description": "Exports in FBX in a given directory",
     "location": "View3D > Side Bar > Batch Exporter",
@@ -95,6 +95,8 @@ class BatchExportOperator(bpy.types.Operator):
             
             if props.move_to_world_center:
                 object.location = op_x,op_y,op_z
+                
+            object.select_set(False)
         
         os.startfile(props.filepath)
         return {'FINISHED'}
@@ -134,7 +136,7 @@ def unregister():
     bpy.utils.unregister_class(BatchExporter)
     bpy.utils.unregister_class(BatchExportOperator)
     bpy.utils.unregister_class(BatchExportPropertyGroup)
-    del bpy.types.Scene.MyPropertyGroup
+    del bpy.types.Scene.BatchExportPropertyGroup
 
 
 if __name__ == "__main__":
